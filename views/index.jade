@@ -4,3 +4,17 @@ block content
   h1= title
 
   a(href="/new") Create a game
+
+  each game in games 
+    img(src=game.img)
+    p= game.title 
+
+    if game.free
+      p Free 
+    else 
+      p= game.price 
+
+    p= game.genre
+
+  else
+    p No games

@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Game = require("../models/game.js");
 
-router.get("/", (req, res, next) => {
-    res.render("index", { title: "Steam" });
+router.get("/", async (req, res, next) => {
+    const games = await Game.find().sort({ price: 1 });
+    res.render("index", { title: "Steam", games });
 });
 
 router.get("/new", (req, res, next) => {
