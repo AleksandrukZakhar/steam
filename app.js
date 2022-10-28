@@ -4,8 +4,16 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
+const mongoose = require("mongoose");
 
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index.js");
+
+require("dotenv").config();
+
+mongoose.connect(process.env.DB_URL);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 const app = express();
 
