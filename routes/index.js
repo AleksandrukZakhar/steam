@@ -20,4 +20,10 @@ router.post("/new", (req, res, next) => {
     res.redirect("/");
 });
 
+router.post("/delete/:id", async (req, res, next) => {
+    await Game.deleteOne({ _id: req.params.id });
+
+    res.redirect("/");
+});
+
 module.exports = router;
