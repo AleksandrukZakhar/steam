@@ -5,8 +5,9 @@ block content
 
   a(href="/new") Create a game
 
-  each game in games 
-    form(class="game" method="POST" action="/delete/" + game._id)
+  div(class="game")
+    each game in games 
+
       img(src=game.img)
       p= game.title 
 
@@ -17,7 +18,11 @@ block content
 
         p= game.genre
 
-      button(type="submit") Delete
+      form(class="game" method="GET" action="/update/" + game._id)
+        button(type="submit") Update
 
-  else
-    p No games
+      form(class="game" method="POST" action="/delete/" + game._id)
+        button(type="submit") Delete
+
+    else
+      p No games
