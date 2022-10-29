@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1= title
+
+    form(action="/search/" method="POST")
+        input(placeholder="search" name="query")
+        button(type="submit") Search
+
+    div(class="game")
+        each game in games 
+
+            img(src=game.img)
+            p= game.title 
+
+            if game.free
+                p Free 
+            else 
+                p= game.price 
+
+                p= game.genre
+
+            form(class="game" method="GET" action="/update/" + game._id)
+                button(type="submit") Update
+
+            form(class="game" method="POST" action="/delete/" + game._id)
+                button(type="submit") Delete
+
+        else
+            p No games

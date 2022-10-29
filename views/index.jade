@@ -3,6 +3,10 @@ extends layout
 block content
   h1= title
 
+  form(action="/search/" method="POST")
+    input(placeholder="search" name="query")
+    button(type="submit") Search
+
   a(href="/new") Create a game
 
   div(class="game")
@@ -31,7 +35,8 @@ block content
     p Filter by genres 
 
     each genre in genres 
-      a(href="/genres/" + genre._id)= genre._id 
+      p
+        a(href="/genres/" + genre._id)= genre._id 
 
   else 
     p No genres

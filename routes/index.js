@@ -63,4 +63,11 @@ router.get("/genres/:genre", async (req, res, next) => {
     res.render("filter", { games });
 });
 
+router.post("/search", async (req, res, next) => {
+    const { query } = req.body;
+    const games = await Game.find({ title: query });
+
+    res.render("search", { games });
+});
+
 module.exports = router;
