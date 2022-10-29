@@ -26,3 +26,12 @@ block content
 
     else
       p No games
+
+  if genres 
+    p Filter by genres 
+
+    each genre in genres 
+      a(href="/genres/" + genre._id)= genre._id 
+
+  else 
+    p No genres
