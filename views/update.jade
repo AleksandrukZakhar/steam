@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+    form(method="POST" action="/update/" + id)
+        input(placeholder="title" type="text" name="title")
+        input(placeholder="price" type="number" name="price")
+        input(placeholder="free" type="text" name="free")
+        input(placeholder="img url" type="text" name="imgUrl")
+        input(placeholder="genre" type="text" name="genre")
+        button(type="submit") Submit

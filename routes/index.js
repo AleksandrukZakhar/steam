@@ -2,6 +2,7 @@ const { urlencoded } = require("express");
 const express = require("express");
 const router = express.Router();
 const Game = require("../models/game.js");
+const Root = require("../models/root.js");
 
 router.get("/", async (req, res, next) => {
     const games = await Game.find().sort({ price: 1 });
@@ -27,14 +28,14 @@ router.post("/new", async (req, res, next) => {
 });
 
 router.get("/update/:id", (req, res, next) => {
-    res.render("form");
+    res.render("update", { id: req.params.id });
 });
 
-router.post("/update/:id", async (req, res, next) => {
+router.post("/update/:id", (req, res, next) => {
     const { title, price, free, imgUrl, genre } = req.body;
 
-    await Game.updateOne(
-        { _id: JSON.stringify(req.params.id) },
+    Game.updateOne(
+        { _id: req.params.id },
         {
             $set: {
                 title,
