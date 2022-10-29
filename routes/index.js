@@ -28,7 +28,6 @@ router.get("/update/:id", (req, res, next) => {
 router.post("/update/:id", async (req, res, next) => {
     const { title, price, free, imgUrl, genre } = req.body;
 
-    console.log(req.params.id);
     await Game.updateOne(
         { _id: req.params.id },
         {
