@@ -2,6 +2,17 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/style.css')
   body
+    img(class="bgi" src="/images/cyberpunk.webp" alt="cyberpunk")
+
+    header
+      a(href="/") 
+        div
+          img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/512px-Steam_icon_logo.svg.png" alt="logo")
+          p Steam
+      form(action="/search/" method="POST")
+        input(placeholder="search" name="query")
+        button(type="submit") Search
+
     block content

@@ -1,9 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: white;
+  font-family: "Open Sans", sans-serif; }
 
-a {
-  color: #00b7ff; }
+body {
+  overflow-x: hidden; }
+
+.bgi {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  object-fit: cover; }
+
+button {
+  width: 150px;
+  height: 40px;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  font-size: 1.2rem;
+  cursor: pointer; }
+  button:hover {
+    transition: 0.3s ease-in-out;
+    color: black;
+    background-color: white; }
+
+input {
+  width: 18rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 25px;
+  text-align: center; }
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 6rem;
+  position: fixed;
+  gap: 2rem; }
+  header a {
+    text-decoration: none; }
+    header a div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      height: 100%;
+      gap: 1rem;
+      margin-left: 4rem; }
+      header a div img {
+        width: 80px;
+        height: 80px; }
+      header a div p {
+        font-size: 4rem; }
+  header form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100%;
+    gap: 1rem;
+    margin-right: 4rem; }
+
+.genres {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100vw;
+  gap: 2rem; }
+
+.genre-title {
+  font-size: 2rem;
+  font-weight: 800; }
+
+.genre {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 25px;
+  color: white;
+  background-color: black;
+  cursor: pointer; }
+
+.games-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  gap: 0 2rem; }
+
+.game {
+  padding: 1rem;
+  border: 0;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.8); }
+  .game img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover; }
+  .game div {
+    width: 100%;
+    margin-right: 0.5rem; }
+    .game div p {
+      font-size: 2rem; }
+    .game div div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      width: 100%;
+      margin-top: 0.5rem; }
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 400px;
+  height: 614px;
+  gap: 0.3rem;
+  border: 0;
+  border-radius: 25px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8); }
+  .create p {
+    font-size: 2rem; }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: 100vh;
+  gap: 2rem; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,42 +1,48 @@
 extends layout
 
 block content
-  h1= title
 
-  form(action="/search/" method="POST")
-    input(placeholder="search" name="query")
-    button(type="submit") Search
+  div(class="games-container")
+    div(class="genres")
+      p(class="genre-title") Filter by genres 
 
-  a(href="/new") Create a game
+      each genre in genres 
+        div(class="genre")
+          p
+            a(href="/genres/" + genre._id)= genre._id 
 
-  div(class="game")
-    each game in games 
-
-      img(src=game.img)
-      p= game.title 
-
-      if game.free
-        p Free 
       else 
-        p= game.price 
+        div(class="genre")
+          p No genres
 
-        p= game.genre
+    each game in games 
+      div(class="game")
 
-      form(class="game" method="GET" action="/update/" + game._id)
-        button(type="submit") Update
+        img(src=game.img)
 
-      form(class="game" method="POST" action="/delete/" + game._id)
-        button(type="submit") Delete
+        div
+          p= game.title 
+
+          if game.free
+            p= game.genre
+            p Free 
+
+          else 
+            p= game.genre
+            p= `$${game.price}`
+
+          div
+            form(method="GET" action="/update/" + game._id)
+              button(type="submit") Update
+
+            form(method="POST" action="/delete/" + game._id)
+              button(type="submit") Delete
 
     else
-      p No games
+      div(class="game")
+        p No games
 
-  if genres 
-    p Filter by genres 
-
-    each genre in genres 
-      p
-        a(href="/genres/" + genre._id)= genre._id 
-
-  else 
-    p No genres
+    a(href="/new") 
+      div(class="create")
+        p Create a game
+        img(src="/images/plus.svg" alt="plus")

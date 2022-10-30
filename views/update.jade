@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    form(method="POST" action="/update/" + id)
+    form(class="input-container" method="POST" action="/update/" + id)
         input(placeholder="title" type="text" name="title")
         input(placeholder="price" type="number" name="price")
         input(placeholder="free" type="text" name="free")

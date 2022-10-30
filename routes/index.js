@@ -1,17 +1,15 @@
-const { urlencoded } = require("express");
 const express = require("express");
 const router = express.Router();
 const Game = require("../models/game.js");
-const Root = require("../models/root.js");
 
 router.get("/", async (req, res, next) => {
-    const games = await Game.find().sort({ price: 1 });
+    const games = await Game.find().sort({ title: 1 });
     const genres = await Game.aggregate([
         { $project: { genre: 1, _id: 0 } },
         { $group: { _id: "$genre" } },
     ]);
 
-    res.render("index", { title: "Steam", games, genres });
+    res.render("index", { games, genres });
 });
 
 router.get("/new", (req, res, next) => {
@@ -59,16 +57,26 @@ router.post("/delete/:id", async (req, res, next) => {
 });
 
 router.get("/genres/:genre", async (req, res, next) => {
-    const games = await Game.find({ genre: req.params.genre });
+    const games = await Game.find({ genre: req.params.genre }).sort({
+        title: 1,
+    });
+    const genres = await Game.aggregate([
+        { $project: { genre: 1, _id: 0 } },
+        { $group: { _id: "$genre" } },
+    ]);
 
-    res.render("filter", { games });
+    res.render("index", { games, genres });
 });
 
 router.post("/search", async (req, res, next) => {
     const { query } = req.body;
     const games = await Game.find({ title: query });
+    const genres = await Game.aggregate([
+        { $project: { genre: 1, _id: 0 } },
+        { $group: { _id: "$genre" } },
+    ]);
 
-    res.render("search", { games });
+    res.render("index", { games, genres });
 });
 
 module.exports = router;

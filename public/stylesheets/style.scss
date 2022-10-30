@@ -1,11 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+@mixin flex(
+    $direction: row,
+    $content: flex-start,
+    $items: stretch,
+    $wrap: nowrap
+) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $items;
+    flex-wrap: $wrap;
+}
+
+$white-primary: hsl(100, 100%, 100%);
+$black-primary: hsl(0, 0%, 0%);
+$alpha-black: rgba(0, 0, 0, 0.8);
 $link-color: hsl(197, 100%, 50%);
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $white-primary;
+    font-family: "Open Sans", sans-serif;
 }
 
-a {
-  color: $link-color;
+body {
+    overflow-x: hidden;
+}
+
+.bgi {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    object-fit: cover;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    border: 1px solid $white-primary;
+    color: $white-primary;
+    background-color: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+        transition: 0.3s ease-in-out;
+        color: $black-primary;
+        background-color: $white-primary;
+    }
+}
+
+input {
+    width: 18rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 25px;
+    text-align: center;
+}
+
+header {
+    @include flex(row, space-between, center);
+
+    width: 100vw;
+    height: 6rem;
+    position: fixed;
+    gap: 2rem;
+
+    a {
+        text-decoration: none;
+
+        div {
+            @include flex(row, center, center);
+
+            height: 100%;
+            gap: 1rem;
+            margin-left: 4rem;
+
+            img {
+                width: 80px;
+                height: 80px;
+            }
+
+            p {
+                font-size: 4rem;
+            }
+        }
+    }
+
+    form {
+        @include flex(row, center, center);
+
+        height: 100%;
+        gap: 1rem;
+        margin-right: 4rem;
+    }
+}
+
+.genres {
+    @include flex(row, center, center);
+
+    width: 100vw;
+    gap: 2rem;
+}
+
+.genre-title {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.genre {
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 25px;
+    color: $white-primary;
+    background-color: $black-primary;
+    cursor: pointer;
+}
+
+.games-container {
+    @include flex(row, center, center, wrap);
+
+    width: 100vw;
+    height: 100vh;
+    gap: 0 2rem;
+}
+
+.game {
+    padding: 1rem;
+    border: 0;
+    border-radius: 25px;
+    background-color: $alpha-black;
+
+    img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    div {
+        width: 100%;
+        margin-right: 0.5rem;
+
+        p {
+            font-size: 2rem;
+        }
+
+        div {
+            @include flex(row, space-between, center);
+
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.create {
+    @include flex(column, center, center);
+
+    width: 400px;
+    height: 614px;
+    gap: 0.3rem;
+    border: 0;
+    border-radius: 25px;
+    color: $white-primary;
+    background-color: $alpha-black;
+
+    p {
+        font-size: 2rem;
+    }
+}
+
+.input-container {
+    @include flex(column, center, center);
+
+    width: 100vw;
+    height: 100vh;
+    gap: 2rem;
 }
